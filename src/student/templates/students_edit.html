@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
+{#<script>#}
+{#function confirm_deletion() {#}
+{#    alert('Hello');#}
+{#    return confirm('Do you really want to delete the student?');#}
+{##}
+{#</script>#}
+
 {% block content %}
+    {{ block.super }}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-
-      <button type="submit">Save</button>
+      <button type="submit" id="btn_save">Save</button>
+      <button formaction="{% url 'student_delete' id %}" type="submit" id="btn_del" formnovalidate>Delete</button>
     </form>
 {% endblock %}

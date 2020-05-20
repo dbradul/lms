@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{##}
+{#{% block style %}#}
+{#    {{ block.super }}#}
+{#{% endblock %}#}
+
+{% block content %}
+    {{ block.super }}
+
+    <form>
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name"><br>
+      <label for="course">Course:</label><br>
+      <input type="text" id="course" name="course">
+      <button type="submit">Search</button>
+      <button formaction="{% url 'group_add' %}" type="submit">Add</button>
+    </form>
+
+    <p/>
+
+        {% if group_list %}
+            <table border="1px">
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Course</th>
+                  <th>🗑️</th>
+                  <th>🖉</th>
+                </tr>
+                {% for group in group_list %}
+                    <tr>
+                      <td> {{ group.id }}</td>
+                      <td> {{ group.name }}</td>
+                      <td> {{ group.course }}</td>
+                      <td> <a href="{% url 'group_edit' group.id %}">EDIT</a></td>
+                      <td> <a href="{% url 'group_delete' group.id %}">DEL</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>Sorry, list is empty</p>
+        {% endif %}
+
+{% endblock %}

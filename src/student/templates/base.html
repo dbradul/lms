@@ -4,12 +4,83 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
 </head>
+
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+      background-color: #999999;
+      color: white;
+    }
+
+    {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    /* Style the header */
+    .header {
+      background-color: #f1f1f1;
+      padding: 5px;
+      text-align: center;
+    }
+
+    /* Style the top navigation bar */
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    /* Style the topnav links */
+    .topnav a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Change color on hover */
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+</style>
+
+{#<style>#}
+{#.errorlist#}
+{#    {#}
+{#        color: red;#}
+{#    }#}
+{#</style>#}
 <body>
 
-<h1>LMS</h1>
-<h3>{{ title }}</h3>
+<div class="header">
+  <h1>LMS</h1>
+</div>
 
 {% block content %}
+    <div class="topnav">
+      <a href="{% url 'students' %}">Students</a>
+      <a href="{% url 'groups' %}">Groups</a>
+      <a href="#">Courses</a>
+    </div>
+    <h3>{{ title }}</h3>
+    <p></p>
 {% endblock %}
 
 

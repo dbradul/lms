@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
+
 from student.models import Student
 
 class Command(BaseCommand):
@@ -10,6 +11,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         num_students = kwargs['num_students']
 
+        Student.objects.all().delete()
 
+        for _ in range(num_students):
+            Student.generate_student()
 
         self.stdout.write(self.style.SUCCESS(f'Successfully generated {num_students} students'))
