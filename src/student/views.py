@@ -15,12 +15,6 @@ def students_list(request):
     if request.GET.get('lname'):
         qs = qs.filter(last_name=request.GET.get('lname'))
 
-    result = '<br>'.join(
-        str(student)
-        for student in qs
-    )
-
-    # return HttpResponse(result)
     return render(        request=request,
         template_name='students_list.html',
         context={
@@ -76,5 +70,25 @@ def students_edit(request, id):
         context={
             'form' : form,
             'title' : 'Student edit'
+        }
+    )
+
+
+def students_delete(request, id):
+    try:
+        student = Student.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return HttpResponseNotFound(f"Student with id={id} doesn't exist")
+
+    if request.method == 'POST':
+        student.delete()
+        return HttpResponseRedirect(reverse('students'))
+
+    return render(
+        request=request,
+        template_name='students_delete.html',
+        context={
+            'student' : student,
+            'title' : 'Student delete'
         }
     )

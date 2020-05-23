@@ -3,9 +3,11 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <p>
+            Do you really want to delete user <b> {{ student.full_name }} </b>?
+        </p>
 
-      <button type="submit">Save</button>
+      <button type="submit">Delete</button>
       <button formaction="{% url 'students' %}" type="submit">Cancel</button>
     </form>
 {% endblock %}

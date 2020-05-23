@@ -12,3 +12,7 @@ class StudentAddForm(StudentBaseForm):
 
 class StudentEditForm(StudentBaseForm):
     pass
+
+
+class StudentDeleteForm(StudentBaseForm):
+    pass

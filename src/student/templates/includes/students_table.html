@@ -7,8 +7,8 @@
           <th>Email</th>
           <th>Group</th>
           <th>Course</th>
-{#          <th>🗑️</th>#}
           <th>🖉</th>
+          <th>🗑️</th>
         </tr>
         {% for student in students_list %}
             <tr>
@@ -19,7 +19,7 @@
               <td> {{ student.group.name }}</td>
               <td> {{ student.group.course }}</td>
               <td> <a href="/students/edit/{{ student.id }}">EDIT</a></td>
-{#              <td> <a href="/students/delete/{{ student.id }}">DEL</a></td>#}
+              <td> <a href="/students/delete/{{ student.id }}">DELETE</a></td>
             </tr>
         {% endfor %}
     </table>

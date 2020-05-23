@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from group.views import groups_list, group_edit
-from student.views import students_list, students_add, students_edit
+from student.views import students_list, students_add, students_edit, students_delete
 
 
 urlpatterns = [
@@ -29,4 +29,5 @@ urlpatterns = [
     path('students/', students_list, name='students'),
     path('students/add/', students_add),
     path('students/edit/<int:id>', students_edit),
+    path('students/delete/<int:id>', students_delete),
 ]

@@ -22,6 +22,9 @@ class Student(models.Model):
         related_name='students'
     )
 
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
+
     def __str__(self):
         # return str(self.__dict__)
         return f'{self.first_name},' \
