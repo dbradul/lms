@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form>
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name"><br>
+      <label for="course">Course:</label><br>
+      <input type="text" id="course" name="course">
+      <button type="submit">Search</button>
+    </form>
+
+    <p></p>
+
+    {% for group in group_list %}
+        {{ group.id }}
+        {{ group.name }}
+        {{ group.course }}
+        <br>
+    {% empty %}
+        <p>Sorry, list is empty</p>
+    {% endfor %}
+
+{% endblock %}

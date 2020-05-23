@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render
 from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
@@ -6,9 +6,8 @@ from student.forms import StudentAddForm, StudentEditForm
 from student.models import Student
 
 
-# Create your views here.
 def students_list(request):
-    qs = Student.objects.all()
+    qs = Student.objects.all().select_related('group')
 
     if request.GET.get('fname'):
         qs = qs.filter(first_name=request.GET.get('fname'))
@@ -50,7 +49,6 @@ def students_add(request):
             'title' : 'Student add'
         }
     )
-
 
 
 def students_edit(request, id):
