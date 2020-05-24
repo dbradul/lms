@@ -8,6 +8,7 @@
         </p>
 
       <button type="submit">Delete</button>
-      <button formaction="{% url 'students' %}" type="submit">Cancel</button>
+      <a  href="{% url 'students:list' %}">Cancel</a>
+{#      <button formaction="/students/" type="submit">Cancel</button>#}
     </form>
 {% endblock %}
