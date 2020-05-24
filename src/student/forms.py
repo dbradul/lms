@@ -11,7 +11,11 @@ class StudentAddForm(StudentBaseForm):
 
 
 class StudentEditForm(StudentBaseForm):
-    pass
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        email = email.lower()
+        return email
 
 
 class StudentDeleteForm(StudentBaseForm):

@@ -3,11 +3,13 @@
 {% block content %}
 
     <form>
-      <label for="fname">First name:</label><br>
-      <input type="text" id="fname" name="fname"><br>
-      <label for="lname">Last name:</label><br>
-      <input type="text" id="lname" name="lname">
-      <button type="submit">Search</button>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Search by name</span>
+          </div>
+          <input type="text" id="fname" name="fname"  class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+          <button type="submit" class="btn btn-success">Search</button>
+        </div>
     </form>
 
     {% include 'includes/students_table.html' %}

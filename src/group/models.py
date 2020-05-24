@@ -27,7 +27,8 @@ class Group(models.Model):
     classroom = models.ManyToManyField(
         to=Classroom,
         null=True,
-        related_name='groups'
+        related_name='groups',
+        blank=True
     )
 
     def __str__(self):

@@ -28,6 +28,7 @@ def groups_list(request):
         }
     )
 
+
 def group_edit(request, id):
     try:
         group = Group.objects.get(id=id)
@@ -40,7 +41,7 @@ def group_edit(request, id):
         if form.is_valid():
             group = form.save()
             print(f'Group has been saved: {group}')
-            return HttpResponseRedirect(reverse('groups'))
+            return HttpResponseRedirect(reverse('groups:list'))
     else:
         form = GroupEditForm(
             instance = group

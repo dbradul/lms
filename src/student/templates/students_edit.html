@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
+{#            {%  crispy form %}#}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+{#        {{ form.as_p }}#}
+        {{ form|crispy }}
 
-      <button type="submit">Save</button>
-      <button formaction="{% url 'students' %}" type="submit">Cancel</button>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="{% url 'student:list' %}" class="btn btn-light">Cancel</a>
     </form>
 {% endblock %}

@@ -14,20 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import TemplateView
 
 from group.views import groups_list, group_edit
-from student.views import students_list, students_add, students_edit, students_delete
+# from student.views import students_list, students_add, students_edit, students_delete
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', admin.site.urls),
-    path('groups/', groups_list, name='groups'),
-    path('groups/edit/<int:id>', group_edit),
+    path('', TemplateView.as_view(template_name='index.html'), name='index'),
 
-    path('students/', students_list, name='students'),
-    path('students/add/', students_add),
-    path('students/edit/<int:id>', students_edit),
-    path('students/delete/<int:id>', students_delete),
+    # path('groups/', groups_list, name='groups'),
+    # path('groups/edit/<int:id>', group_edit, name='group_edit'),
+    path('groups/', include('group.urls')),
+
+    # path('students/', students_list, name='students'),
+    # path('students/add/', students_add, name='student_add'),
+    # path('students/edit/<int:id>', students_edit, name='student_edit'),
+    # path('students/delete/<int:id>', students_delete, name='student_delete'),
+    path('students/', include('student.urls')),
+
 ]

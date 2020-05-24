@@ -4,10 +4,10 @@
     <form method="post">
         {% csrf_token %}
         <p>
-            Do you really want to delete user <b> {{ student.full_name }} </b>?
+            Do you really want to delete user <b> {{ student42.full_name }} </b>?
         </p>
 
-      <button type="submit">Delete</button>
-      <button formaction="{% url 'students' %}" type="submit">Cancel</button>
+      <button type="submit" class="btn btn-danger">Delete</button>
+      <a href="{% url 'student:list' %}" class="btn btn-light">Cancel</a>
     </form>
 {% endblock %}
