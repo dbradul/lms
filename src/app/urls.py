@@ -16,16 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from django.views.generic import TemplateView
+
+from core.views import RegisterUserView, LoginUserView, LogoutUserView, ProfileView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', admin.site.urls),
+    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('register/', RegisterUserView.as_view(), name='register'),
+    path('login/', LoginUserView.as_view(), name='login'),
+    path('logout/', LogoutUserView.as_view(), name='logout'),
+    path('profile/', ProfileView.as_view(), name='profile'),
 
     path('groups/', include('group.urls')),
-    path('students/', include(('student.urls', 'students')))
-    #
-    # path('teacher/', include(('teacher.urls', 'teacher'), namespace='teacher'), name='teacher'),
+    path('students/', include('student.urls')),
+    # path('teacher/', include(('teacher.urls', 'teacher'),
 ]
+
 
 
 if settings.DEBUG:

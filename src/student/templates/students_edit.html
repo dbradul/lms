@@ -6,6 +6,6 @@
         {{ form.as_p }}
 
       <button type="submit">Save</button>
-      <button formaction="{% url 'students:list' %}" type="submit">Cancel</button>
+      <a href="{% url 'students:list' %}" class="button">Cancel</a>
     </form>
 {% endblock %}

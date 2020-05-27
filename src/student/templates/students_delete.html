@@ -7,8 +7,8 @@
             Do you really want to delete user <b> {{ student.full_name }} </b>?
         </p>
 
-      <button type="submit">Delete</button>
-      <a  href="{% url 'students:list' %}">Cancel</a>
+      <button type="submit" class="btn btn-danger">Delete</button>
+      <a  href="{% url 'students:list' %}" class="btn btn-light">Cancel</a>
 {#      <button formaction="/students/" type="submit">Cancel</button>#}
     </form>
 {% endblock %}

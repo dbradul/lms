@@ -1,9 +1,14 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import path
 
-from student.views import students_list, students_add, students_edit, students_delete, StudentsListView, \
-    StudentsUpdateView, StudentsCreateView, StudentsDeleteView
+from student.views import (
+    StudentsListView,
+    StudentsUpdateView,
+    StudentsCreateView,
+    StudentsDeleteView
+)
 
-# app_name = 'students'
+app_name = 'students'
 
 urlpatterns = [
     # path('', students_list, name='list'),
