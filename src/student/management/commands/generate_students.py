@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 from group.models import Group
 from student.models import Student
 
+
 class Command(BaseCommand):
     help = 'Generate N fake students'
 

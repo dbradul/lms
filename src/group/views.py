@@ -9,9 +9,8 @@ from group.forms import GroupEditForm, GroupAddForm
 from group.models import Group
 
 
-# Create your views here.
 def groups_list(request):
-    qs = Group.objects.all()#.select_related('students')
+    qs = Group.objects.all()
 
     if request.GET.get('name'):
         qs = qs.filter(name__startswith=request.GET.get('name'))
@@ -23,10 +22,11 @@ def groups_list(request):
         request=request,
         template_name='group_list.html',
         context={
-            'group_list' : qs,
+            'group_list': qs,
             'title': 'Group list'
         }
     )
+
 
 def group_edit(request, id):
     try:
@@ -43,15 +43,15 @@ def group_edit(request, id):
             return HttpResponseRedirect(reverse('groups'))
     else:
         form = GroupEditForm(
-            instance = group
+            instance=group
         )
 
     return render(
         request=request,
         template_name='group_edit.html',
         context={
-            'form' : form,
-            'title' : 'Group edit',
-            'group' : group
+            'form': form,
+            'title': 'Group edit',
+            'group': group
         }
     )

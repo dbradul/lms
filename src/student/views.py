@@ -17,10 +17,11 @@ def students_list(request):
     if request.GET.get('lname'):
         qs = qs.filter(last_name=request.GET.get('lname'))
 
-    return render(        request=request,
+    return render(
+        request=request,
         template_name='students_list.html',
         context={
-            'students_list' : qs,
+            'students_list': qs,
             'title': 'Student list'
         }
     )
@@ -41,8 +42,8 @@ def students_add(request):
         request=request,
         template_name='students_add.html',
         context={
-            'form' : form,
-            'title' : 'Student add'
+            'form': form,
+            'title': 'Student add'
         }
     )
 
@@ -63,15 +64,15 @@ def students_edit(request, id):
             return HttpResponseRedirect(reverse('students:list'))
     else:
         form = StudentEditForm(
-            instance = student
+            instance=student
         )
 
     return render(
         request=request,
         template_name='students_edit.html',
         context={
-            'form' : form,
-            'title' : 'Student edit'
+            'form': form,
+            'title': 'Student edit'
         }
     )
 
@@ -90,8 +91,8 @@ def students_delete(request, id):
         request=request,
         template_name='students_delete.html',
         context={
-            'student' : student,
-            'title' : 'Student delete'
+            'student': student,
+            'title': 'Student delete'
         }
     )
 

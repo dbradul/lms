@@ -18,7 +18,6 @@ class Student(models.Model):
         to=Group,
         null=True,
         on_delete=models.SET_NULL,
-        #db_constraint = True
         related_name='students'
     )
 

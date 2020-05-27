@@ -8,7 +8,6 @@ class UserAccountRegistrationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         fields = ('username', 'first_name', 'last_name', 'email')
 
-
     def clean_email(self):
 
         email = self.cleaned_data['email']

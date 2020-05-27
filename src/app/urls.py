@@ -27,8 +27,6 @@ urlpatterns = [
 
     path('groups/', include('group.urls')),
     path('students/', include(('student.urls', 'students')))
-    #
-    # path('teacher/', include(('teacher.urls', 'teacher'), namespace='teacher'), name='teacher'),
 ]
 
 if settings.DEBUG:
