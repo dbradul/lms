@@ -13,8 +13,14 @@ class StudentAddForm(StudentBaseForm):
 
 
 class StudentEditForm(StudentBaseForm):
-    pass
+    def clean_email(self):
 
+        email = self.cleaned_data['email']
+
+        return email
+
+    def clean(self):
+        pass
 
 class StudentDeleteForm(StudentBaseForm):
     pass
