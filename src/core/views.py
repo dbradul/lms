@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import CreateView, UpdateView, DetailView
@@ -23,6 +23,7 @@ class RegisterUserView(CreateView):
 
 class LoginUserView(LoginView):
     template_name = 'login.html'
+    extra_context = {'title': 'Login as a user'}
 
     def get_success_url(self):
         return reverse('index')
@@ -30,15 +31,14 @@ class LoginUserView(LoginView):
 
 class LogoutUserView(LogoutView):
     template_name = 'logout.html'
-
-    def get_success_url(self):
-        return reverse('login')
+    extra_context = {'title': 'User has been logged out'}
 
 
 class ProfileView(UpdateView):
     model = User
     template_name = 'profile.html'
     form_class = ProfileUserForm
+    extra_context = {'title': 'Edit user data'}
 
     def get_object(self):
         return self.request.user
@@ -46,7 +46,3 @@ class ProfileView(UpdateView):
     def get_success_url(self):
         return reverse('index')
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(object_list=None, **kwargs)
-        context['title'] = 'Edit user data'
-        return context

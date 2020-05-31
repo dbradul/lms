@@ -18,7 +18,8 @@ class StudentsListView(StudentBaseView, ListView):
     model = Student
     template_name = 'students_list.html'
     context_object_name = 'students_list'
-    paginate_by = 10
+    paginate_by = 8
+    extra_context = {'title': 'Students list'}
 
     def get_queryset(self):
         request = self.request
@@ -31,11 +32,6 @@ class StudentsListView(StudentBaseView, ListView):
                 Q(first_name=request.GET.get('search'))
             )
         return qs
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(object_list=None, **kwargs)
-        context['title'] = 'Student list'
-        return context
 
 
 class StudentsUpdateView(StudentBaseView, UpdateView):
@@ -54,4 +50,3 @@ class StudentsDeleteView(StudentBaseView, DeleteView):
     model = Student
     template_name = 'students_delete.html'
     pk_url_kwarg = 'id'
-

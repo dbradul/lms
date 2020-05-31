@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import Form, ModelForm
@@ -10,6 +10,12 @@ from django import forms
 #     password = forms.PasswordInput()
 #     email = forms.EmailField(max_length=64)
 
+#
+# class EmailValidator:
+#     email_attribute_name = 'email'
+#
+#
+#
 
 class RegisterUserForm(UserCreationForm):
 #     pass
@@ -43,10 +49,15 @@ class RegisterUserForm(UserCreationForm):
         return email
 
 
-class ProfileUserForm(ModelForm):
-    class Meta:
-        model = User
-        fields = ('first_name', 'last_name', 'username', 'email')
+    def clean(self):
+
+        return super().clean()
+
+class ProfileUserForm(UserChangeForm):
+    class Meta(UserChangeForm.Meta):
+        # exclude = ('password', 'permissions', '_user_permissions', '_groups')
+        fields = ("username", 'email', 'first_name', 'last_name')
+    #     fields = ('first_name', 'last_name', 'username', 'email')
 
     # login = forms.CharField(max_length=64)
     # password = forms.PasswordInput()
