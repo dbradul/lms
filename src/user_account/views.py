@@ -37,6 +37,7 @@ class UserAccountProfileView(UpdateView):
     template_name = 'profile.html'
     extra_context = {'title': 'Edit current user profile'}
     form_class = UserAccountProfileForm
+    success_url = reverse_lazy('index')
 
     def get_object(self):
         return self.request.user
