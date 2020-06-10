@@ -18,9 +18,3 @@ from django.db import models
 #         return f'{self.first_name} {self.last_name} Profile'
 #
 
-class UserProfile(User):
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-
-    def __str__(self):
-        return f'{self.first_name} {self.last_name} Profile'

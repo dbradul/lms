@@ -14,5 +14,6 @@ class StudentsInline(admin.TabularInline):
 class GroupAdmin(admin.ModelAdmin):
     fields = ['name', 'classroom']
     inlines = (StudentsInline,)
+    list_per_page = 10
 
 admin.site.register(Group, GroupAdmin)

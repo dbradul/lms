@@ -1,23 +1,36 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ block.super }}
+    Students list
+{% endblock %}
 
 {% block content %}
 
     <form>
-{#      <label for="fname">First name:</label><br>#}
-{#      <input type="text" id="fname" name="fname"><br>#}
-{#      <label for="lname">Last name:</label><br>#}
-{#      <input type="text" id="lname" name="lname">#}
-{#      <button type="submit">Search</button>#}
 
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">First or last name</span>
-      </div>
-      <input type="text" class="form-control" placeholder="Search..." aria-label="Username" aria-describedby="basic-addon1" name="search">
-      <button type="submit" class="btn btn-success">Search</button>
-    </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">First name</span>
+          </div>
+          <input  name="fname" type="text" class="form-control" placeholder="First name" aria-label="firstname" aria-describedby="basic-addon1">
+
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Last name</span>
+          </div>
+          <input  name="lname" type="text" class="form-control" placeholder="Last name" aria-label="lastname" aria-describedby="basic-addon1">
+
+          <button type="submit" class="btn btn-success">Search</button>
+        </div>
 
     </form>
+
+{#    <form>#}
+{#        {{ filter.form|crispy }}#}
+{#        <button type="submit" class="btn btn-success">Search</button>#}
+{#    </form>#}
+
 
     {% include 'includes/students_table.html' %}
 

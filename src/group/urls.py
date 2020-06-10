@@ -7,6 +7,6 @@ app_name = 'groups'
 urlpatterns = [
     path('', GroupsListView.as_view(), name='list'),
     path('add', GroupsCreateView.as_view(), name='add'),
-    path('edit/<int:id>', GroupsUpdateView.as_view(), name='edit'),
-    path('delete/<int:id>', GroupsDeleteView.as_view(), name='delete'),
+    path('edit/<int:pk>', GroupsUpdateView.as_view(), name='edit'),
+    path('delete/<int:pk>', GroupsDeleteView.as_view(), name='delete'),
 ]

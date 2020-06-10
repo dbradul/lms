@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     'django_extensions',
     'crispy_forms',
 
-    'core',
+    # 'core',
     'student',
     'group',
+    'user_account',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 LOGGING = {
@@ -159,6 +164,8 @@ INTERNAL_IPS = [
     # ...
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# AUTH_USER_MODEL = 'user_account.UserProfile2'
 
-# AUTH_USER_MODEL = 'core.UserProfile'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = '/'

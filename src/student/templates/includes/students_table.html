@@ -1,6 +1,8 @@
 {% if students_list %}
     <table class="table table-hover">
+
         <thead class="thead-dark">
+
             <tr>
               <th>ID</th>
               <th>First name</th>
@@ -11,7 +13,9 @@
               <th>🖉</th>
               <th>🗑️</th>
             </tr>
-        </thead>
+
+          </thead>
+
         {% for student in students_list %}
             <tr>
               <td> {{ student.id }}</td>
@@ -44,31 +48,9 @@
 {#    </span>#}
 
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-
-                {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
-{#                    <li class="page-item disabled">#}
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">{{ page_obj.previous_page_number }}</a>
-{#                    </li>#}
-                {% endif %}
-
-                <li class="page-item active">
-                    <a class="page-link" href="#">{{ page_obj.number }} <span class="sr-only">(current)</span></a>
-                </li>
-
-                {% if page_obj.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
-                {% endif %}
-
-
-            </ul>
-        </nav>
-
+        <div class="p-1 m-1">
+            {% include 'includes/pagination.html' %}
+        </div>
 
 {#    </div>#}
 
