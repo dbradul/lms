@@ -26,7 +26,8 @@ class Student(models.Model):
 
     def __str__(self):
         # return str(self.__dict__)
-        return f'{self.first_name},' \
+        base = super().__str__()
+        return base + f'{self.first_name},' \
                f'{self.last_name},' \
                f'{self.email},' \
                f'{self.birthdate}'
@@ -49,6 +50,6 @@ class Student(models.Model):
 
 
     def save(self):
-        # ...
+        print('PRE SAVE')
         super().save()
-        # ...
+        print('POST SAVE')
