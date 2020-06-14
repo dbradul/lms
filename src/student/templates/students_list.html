@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ block.super }}
+    Students list
+{% endblock %}
 
 {% block content %}
 
     <form>
+
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">First name</span>
@@ -16,7 +23,14 @@
 
           <button type="submit" class="btn btn-success">Search</button>
         </div>
+
     </form>
+
+{#    <form>#}
+{#        {{ filter.form|crispy }}#}
+{#        <button type="submit" class="btn btn-success">Search</button>#}
+{#    </form>#}
+
 
     {% include 'includes/students_table.html' %}
 

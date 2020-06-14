@@ -1,6 +1,8 @@
 {% if students_list %}
     <table class="table table-hover">
-          <thead class="thead-dark">
+
+        <thead class="thead-dark">
+
             <tr>
               <th>ID</th>
               <th>First name</th>
@@ -11,6 +13,7 @@
               <th>🖉</th>
               <th>🗑️</th>
             </tr>
+
           </thead>
 
         {% for student in students_list %}
@@ -21,12 +24,36 @@
               <td> {{ student.email }}</td>
               <td> {{ student.group.name }}</td>
               <td> {{ student.group.course }}</td>
-{#              <td> <a href="/students/edit/{{ student.id }}">EDIT</a></td>#}
               <td> <a href="{% url 'students:edit' student.id %}">EDIT</a></td>
               <td> <a href="{% url 'students:delete' student.id %}">DELETE</a></td>
             </tr>
         {% endfor %}
     </table>
+
+{#    <div class="pagination">#}
+{#    <span class="step-links">#}
+{#        {% if page_obj.has_previous %}#}
+{#            <a href="?page=1">&laquo; first</a>#}
+{#            <a href="?page={{ page_obj.previous_page_number }}">previous</a>#}
+{#        {% endif %}#}
+{##}
+{#        <span class="current">#}
+{#            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
+{#        </span>#}
+{##}
+{#        {% if page_obj.has_next %}#}
+{#            <a href="?page={{ page_obj.next_page_number }}">next</a>#}
+{#            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>#}
+{#        {% endif %}#}
+{#    </span>#}
+
+
+        <div class="p-1 m-1">
+            {% include 'includes/pagination.html' %}
+        </div>
+
+{#    </div>#}
+
 {% else %}
     <p>Sorry, list is empty</p>
 {% endif %}

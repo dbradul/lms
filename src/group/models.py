@@ -5,7 +5,7 @@ from django.db import models
 
 class Classroom(models.Model):
     name = models.CharField(max_length=64)
-    floor = models.SmallIntegerField(max_length=128, null=True)
+    floor = models.SmallIntegerField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.name} - Floor# {self.floor}'
