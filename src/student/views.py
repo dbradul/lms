@@ -130,16 +130,16 @@ class StudentsListView(LoginRequiredMixin, FilterView):
             )
         return qs
 
-    def get_context_data(self, *args, **kwargs):
-        from urllib.parse import urlencode
-        context = super().get_context_data(*args, **kwargs)
-
-        query_params = copy.deepcopy(self.request.GET)
-        if 'page' in query_params:
-            del query_params['page']
-        context['query_params'] = urlencode(query_params)
-
-        return context
+    # def get_context_data(self, *args, **kwargs):
+    #     from urllib.parse import urlencode
+    #     context = super().get_context_data(*args, **kwargs)
+    #
+    #     query_params = copy.deepcopy(self.request.GET)
+    #     if 'page' in query_params:
+    #         del query_params['page']
+    #     context['query_params'] = urlencode(query_params)
+    #
+    #     return context
 
 class StudentsUpdateView(LoginRequiredMixin, UpdateView):
     model = Student

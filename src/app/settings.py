@@ -58,6 +58,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'core.middlewares.simple_middleware',
+    'core.middlewares.QueryParamsInjectorMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'

@@ -2,7 +2,7 @@
     <ul class="pagination">
 
         {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page=1&{{ query_params }}">First</a></li>
+            <li class="page-item"><a class="page-link" href="?page=1&{{ request.query_params }}">First</a></li>
 {#            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&{{ query_params }}" tabindex="-1"> << </a>#}
         {% endif %}
 
@@ -17,7 +17,7 @@
 {#                {% elif number_page > page_obj.number|add:-offset and number_page < page_obj.number|add:offset  %}#}
                 {% elif number_page > page_obj.number|add:-3 and number_page < page_obj.number|add:3  %}
                     <li class="page-item">
-                      <a class="page-link" href="?page={{ number_page }}&{{ query_params }}">{{ number_page }} </a>
+                      <a class="page-link" href="?page={{ number_page }}&{{ request.query_params }}">{{ number_page }} </a>
                     </li>
                 {% endif %}
 
@@ -29,7 +29,7 @@
 {#            <li class="page-item">#}
 {#                <a class="page-link" href="?page={{ page_obj.next_page_number }}&{{ query_params }}"> >> </a>#}
 {#            </li>#}
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&{{ query_params }}">Last</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&{{ request.query_params }}">Last</a></li>
         {% endif %}
 
 
