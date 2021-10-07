@@ -7,6 +7,11 @@ name = "pypi"
 django = "==3.2.7"
 faker = "*"
 ipython = "*"
+django-extensions = "*"
+flake8 = "*"
+flake8-builtins = "*"
+flake8-import-order = "*"
+pep8-naming = "*"
 
 [requires]
 python_version = "3.8"
