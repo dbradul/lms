@@ -1,11 +1,11 @@
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from webargs import fields
-from webargs.djangoparser import use_kwargs, use_args
 
 from students.forms import StudentCreateForm
 from students.models import Student
@@ -31,9 +31,7 @@ def handle_error(error, req, schema, *, error_status_code, error_headers):
         "first_name": fields.Str(
             required=False,
         ),
-        "text": fields.Str(
-            required=False
-        ),
+        "text": fields.Str(required=False),
     },
     location="query",
 )
@@ -79,7 +77,7 @@ def create_student(request):
         form = StudentCreateForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/students')
+            return HttpResponseRedirect(reverse('students-list'))
 
     elif request.method == 'GET':
         form = StudentCreateForm()
@@ -88,6 +86,30 @@ def create_student(request):
     <form method="POST">
       {form.as_p()}
       <input type="submit" value="Create">
+    </form>
+    """
+
+    return HttpResponse(form_html)
+
+
+@csrf_exempt
+def update_student(request, pk):
+
+    student = get_object_or_404(Student, id=pk)
+
+    if request.method == 'POST':
+        form = StudentCreateForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('students-list'))
+
+    elif request.method == 'GET':
+        form = StudentCreateForm(instance=student)
+
+    form_html = f"""
+    <form method="POST">
+      {form.as_p()}
+      <input type="submit" value="Save">
     </form>
     """
 
